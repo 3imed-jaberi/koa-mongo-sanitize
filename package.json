@@ -1,1 +1,62 @@
-# init 🚧 ..
+{
+  "name": "koa-mongo-sanitize",
+  "version": "0.1.0",
+  "main": "index.js",
+  "description": "Sanitize your Koa payload to prevent MongoDB operator injection.",
+  "files": [
+    "index.js"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/3imed-jaberi/koa-mongo-sanitize.git"
+  },
+  "scripts": {
+    "lint": "eslint .",
+    "pretest": "npm run lint",
+    "test": "mocha index.spec.js --exit",
+    "precoverage": "rimraf .nyc_output coverage",
+    "coverage": "nyc npm run test",
+    "ci": "npm run coverage"
+  },
+  "keywords": [
+    "koa",
+    "mongodb",
+    "sanitize",
+    "middleware",
+    "operator-injection",
+    "mongodb-injection",
+    "koa-mongo-sanitize"
+  ],
+  "author": {
+    "name": "imed jaberi",
+    "email": "imed-jaberi@outlook.com",
+    "url": "https://www.3imed-jaberi.com"
+  },
+  "license": "MIT",
+  "dependencies": {
+    "express-mongo-sanitize": "latest"
+  },
+  "devDependencies": {
+    "chai": "^4.2.0",
+    "eslint": "^7.17.0",
+    "eslint-config-standard": "^16.0.2",
+    "eslint-plugin-import": "^2.22.1",
+    "eslint-plugin-node": "^11.1.0",
+    "eslint-plugin-promise": "^4.2.1",
+    "eslint-plugin-standard": "^5.0.0",
+    "koa": "^2.13.1",
+    "koa-bodyparser": "^4.3.0",
+    "koa-router": "^10.0.0",
+    "mocha": "^8.2.1",
+    "nyc": "^15.1.0",
+    "rimraf": "^3.0.2",
+    "supertest": "^6.0.1"
+  },
+  "enignes": {
+    "node": ">= 10"
+  },
+  "bugs": {
+    "url": "https://github.com/3imed-jaberi/koa-mongo-sanitize/issues"
+  },
+  "homepage": "https://github.com/3imed-jaberi/koa-mongo-sanitize#readme"
+}
