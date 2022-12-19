@@ -1,7 +1,7 @@
 /*!
  * koa-mongo-sanitize
  *
- * Copyright(c) 2021 Imed Jaberi
+ * Copyright(c) 2021-2022 imed jaberi (imed-jaberi) <https://www.3imed-jaberi.com>
  * MIT Licensed
  */
 
@@ -13,32 +13,25 @@
 const { sanitize } = require('express-mongo-sanitize')
 
 /**
- * Expose `mongoSanitize()`.
- */
-
-module.exports = mongoSanitize
-// use directly the santize function
-module.exports.sanitize = sanitize
-
-/**
  * Sanitize your Koa payload to prevent MongoDB operator injection.
  *
  * @api public
  */
 function mongoSanitize (options) {
-  return function (ctx, next) {
-    [
-      'body',
-      'params',
-      'headers',
-      'query',
-      'search'
-    ].forEach(function (k) {
-      if (ctx.request[k]) {
-        ctx.request[k] = sanitize(ctx.request[k], options)
-      }
-    })
+  return async (ctx, next) => {
+    for (const key of ['body', 'params', 'headers', 'query', 'search']) {
+      if (!ctx.request[key]) continue
+      ctx.request[key] = sanitize(ctx.request[key], options)
+    }
 
-    next()
+    await next()
   }
 }
+
+/**
+ * Expose `mongoSanitize()`.
+ */
+
+module.exports = mongoSanitize
+module.exports.mongoSanitize = mongoSanitize
+module.exports.sanitize = sanitize
